@@ -12,8 +12,8 @@ def exchange():
             response.raise_for_status()
             data = response.json()
             if code in data['rates']:
-                exchange_rate = data['rares'][code]
-                mb.showinfo('Курс обмена', f'Курс: {exchange_rate} {code} за 1 доллар')
+                exchange_rate = data['rates'][code]
+                mb.showinfo('Курс обмена', f'Курс: {exchange_rate:.2f} {code} за 1 доллар')
             else:
                 mb.showerror('Ошибка', f'Валюта {code} не найдена')
         except Exception as e:
@@ -24,7 +24,7 @@ def exchange():
 
 window = Tk()
 window.title('Курс обмена валюты')
-window.geometry('360x80')
+window.geometry('360x180')
 
 Label(text='Введите код валюты').pack(padx=10, pady=10)
 
